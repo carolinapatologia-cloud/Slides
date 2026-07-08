@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Design - Slides LaudoMed</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+        /* Força a proporção padrão de slide widescreen 16:9 */
+        
+        .slide {
+            width: 960px;
+            height: 540px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+        /* 🎨 DESIGN DO SLIDE 1: A CAPA (Fundo Escuro) */
+        
+        .capa {
+            background: linear-gradient(135deg, #4A148C 0%, #2979FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+        /* Caixa Central com Efeito Vidro (Glassmorphism) */
+        
+        .caixa-vidro-capa {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 40px 50px;
+            width: 100%;
+            max-width: 750px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .titulo-capa {
+            color: #ffffff;
+            font-size: 44px;
+            font-weight: 800;
+            margin: 0 0 15px 0;
+            letter-spacing: 2px;
+        }
+        
+        .subtitulo-capa {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 300;
+        }
+        
+        .rodape-capa {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        /* 📑 DESIGN DO SLIDE 2: O MIOLO (Fundo Claro) */
+        
+        .miolo {
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* Linha decorativa roxa no topo */
+        
+        .linha-topo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #6A1B9A;
+        }
+        
+        .cabecalho-miolo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .titulo-miolo {
+            color: #333333;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            max-width: 80%;
+            line-height: 1.3;
+        }
+        
+        .logo-miolo {
+            background-color: #6A1B9A;
+            color: white;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+        /* Divisão das duas colunas (Texto vs Imagem) */
+        
+        .conteudo-miolo {
+            display: flex;
+            gap: 40px;
+            flex-grow: 1;
+            align-items: center;
+            height: 340px; /* Garante altura fixa para alinhar os elementos */
+        }
+        
+        .coluna-texto {
+            width: 50%;
+        }
+        
+        .coluna-texto ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .coluna-texto li {
+            color: #555555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .coluna-texto strong {
+            color: #333333;
+            font-size: 15px;
+        }
+        
+        /* 🛠️ AJUSTADO: Container da foto limpo e com sombra realista */
+        .coluna-visual {
+            width: 50%;
+            height: 100%;
+            max-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* 🛠️ NOVO: Controla o tamanho do print para encaixar perfeito */
+        .coluna-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Mantém a proporção sem cortar seu print */
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sombra elegante de sobreposição */
+        }
+        
+        .rodape-miolo {
+            display: flex;
+            justify-content: space-between;
+            color: #999999;
+            font-size: 11px;
+            border-top: 1px solid #eeeeee;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        
+        .identificador-etiqueta {
+            font-size: 11px;
+            color: #6A1B9A;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🎨 SLIDE 1: MODELO CAPA -->
+    <div class="slide capa">
+        <div class="caixa-vidro-capa">
+            <h1 class="titulo-capa">LAUDOMED</h1>
+            <p class="subtitulo-capa">Inovação Tecnológica, Segurança de Dados e Rastreabilidade na Jornada do Paciente</p>
+        </div>
+        <div class="rodape-capa">
+            Equipe: Carolina Alves e Acélio Filho Professora Orientadora: Raglicia Sandi | Gestão da Qualidade e Saúde Digital 
+        </div>
+    </div>
+
+     <!-- 📑 SLIDE 0: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Objetivos Estratégicos e Impacto Operacional</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Implantação Imediata (Plug & Play):</strong> Eliminar a complexidade de configurações iniciais demoradas, reduzindo ou extinguindo o tempo tradicional de implantação do sistema.</li>
+                    <li><strong>Agilidade na Entrega:</strong> Otimizar o fluxo de trabalho de ponta a ponta para encurtar significativamente o prazo de liberação dos laudos técnicos.</li>
+                    <li><strong>Automação de Processos:</strong> Automatizar a emissão e o envio de protocolos de atendimento e laudos finais diretamente para o paciente, reduzindo o trabalho manual da recepção.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="olafulano.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 02 ]</span>
+        </div>
+    </div>
+
+
+    <!-- 📑 SLIDE 1: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">O Gargalo dos Cadastros e Envio de Laudos e a Segurança da Informação</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Duplicidade de Prontuário:</strong> Impacto direto em glosas financeiras, atrasos na liberação de exames e riscos de troca de informações clínicas.</li>
+                    <li><strong>Segurança e Rastreabilidade:</strong> Vulnerabilidade no controle de quem acessa históricos e laudos via canais como email e whatsapp.</li>
+                    <li><strong>Eficiência Operacional:</strong> Atualmente os sistemas são engessados demandando tempo de implantação e configuração de dados assim como a operacionalização na rotina necessita de preenchimento de uma infinidade de dados e cliques.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="errocadastro.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 03 ]</span>
+        </div>
+    </div>
+
+    <!-- 📑 SLIDE 2: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Ecossistema Integrado de Gestão Inteligente</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Centralização da jornada do paciente:</strong> Facilidade de envio e integração de dados cadastrais desde o início até a liberação do laudo.</li>
+                    <li><strong>Mitigação de erros na origem:</strong> Interface focada em UX médica para garantir precisão na coleta de dados cadastrais.</li>
+                    <li><strong>Foco em escalabilidade</stro>:</strong> Arquitetura pensada para rodar de forma leve para usuários de telemedicina,  clínicas e laboratórios de qualquer porte.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="fluxo.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 04 ]</span>
+        </div>
+    </div>
+
+    <!-- 📑 SLIDE 3: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Engenharia de Software e Banco de Dados na Nuvem</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Front End de Alta Performance:</strong> Desenvolvido em HTML5 estruturado e Vanilla JavaScript, eliminando overhead de frameworks e garantindo carregamento instantâneo.</li>
+                    <li><strong>Persistência em Nuvem:</strong> Integração nativa com Supabase (PostgreSQL) via chamadas assíncronas assinaladas por APIs RESTful.</li>
+                    <li><strong>Persitência Inteligente (UPSERT):</strong> Mecanismo de salvamento que diferencia novos registros de atualizações na mesma ficha, blindando o banco contra duplicidade.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="suprabase.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 05 ]</span>
+        </div>
+    </div>
+
+    <!-- 📑 SLIDE 6: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Controle de Acesso Baseado em Papéis (RBAC)</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Segurança Estrita:</strong> Divisão de privilégios operacionais mapeada diretamente no banco de dados.</li>
+                    <li><strong>Perfis Customizados:</strong> <li>Profissional Executor: Foco na liberação técnica e inserção de exames. </li>
+                                                              <li>Recepcionista: Restrita à busca, cadastro e captação de guias.</li>
+                                                              <li>Administrador: Visão macro do sistema e controle de auditoria.</li>                                                                           </li>
+                    <li><strong>Conformidade:</strong> Alinhamento prático com diretrizes de controle de qualidade laboratorial e proteção de dados de saúde.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="perfil de acesso.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 06 ]</span>
+        </div>
+    </div>
+    <!-- 📑 SLIDE 7: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Filtro Proativo contra Prontuários Duplicados</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Barreira de Segurança:</strong>Tela de busca unificada obrigatória antecedendo o fluxo de criação de novas fichas.</li>
+                    <li><strong>Query Inteligente:</strong>Varredura em tempo real por correspondência parcial de Nome (operador .ilike) ou exatidão de CPF.</li>                                                                                                                          </li>
+                    <li><strong>Navegação Fluida:</strong>Seleção direta na lista que reaproveita a mesma rota de tela, abrindo os dados preenchidos em modo de edição e atualização.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="busca.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 07 ]</span>
+        </div>
+    </div>
+     <!-- 📑 SLIDE 8: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Evolução e Pipelines Futuros</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Módulo de Storage:</strong>Implementação de upload de requisições médicas e CNH digital direto para buckets seguros na nuvem.</li>
+                    <li><strong>Criptografia na origem:</strong>Camada extra de proteção em arquivos anexados pelos pacientes.</li>                                                                                                                          </li>
+                    <li><strong>Segurança Avançada (RLS):</strong>Ativação de Row Level Security para travar o banco de dados no nível de usuário logado.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="passos.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 08 ]</span>
+        </div>
+    </div>
+
+     <!-- 📑 SLIDE 9: MODELO INTERIOR -->
+    <div class="slide miolo">
+        <div class="linha-topo"></div>
+
+        <div class="cabecalho-miolo">
+            <h2 class="titulo-miolo">Perspectivas a Longo Prazo</h2>
+            <div class="logo-miolo">LAUDOMED</div>
+        </div>
+        <div class="conteudo-miolo">
+            <!-- Metade Esquerda: Texto estruturado -->
+            <div class="coluna-texto">
+                <span class="identificador-etiqueta">▲ Conceito Técnico</span>
+                <ul>
+                    <li><strong>Módulos de IA:</strong> Programação de módulos de IA customizáveis para suporte em diagnóstico de acordo com protocolos autorizados pela ANVISA e FDA.</li>
+                    <li><strong>Assuntos Regulatórios:</strong> Registro na ANVISA e protocolos de validação de software.</li>                                                                                                                          </li>
+                    <li><strong>Módulos Adicinais</strong> Modulação de acordo com a atividade clínica ou laboratorial.</li>
+                </ul>
+            </div>
+
+            <!-- Metade Direita: O print limpo ocupando o espaço total -->
+            <div class="coluna-visual">
+                <img src="futuro.png" alt="Print da Tela de cadastro">
+            </div>
+        </div>
+
+        <div class="rodape-miolo">
+            <span>LaudoMed — Plataforma de Gestão Inteligente</span>
+            <span>[ 09 ]</span>
+        </div>
+    </div>
+</body>
+
+</html>
